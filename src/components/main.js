@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from "react";
-import Avatar from "@material-ui/core/Avatar";
-import { Paper } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Link from "@material-ui/core/Link";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Address from "./address";
-import XGridDemo from "./transactions";
-import Summary from "./summary";
-import Bird from "./../bird_logo.png";
-import Grid from "@material-ui/core/Grid";
+import React, { useEffect, useState } from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import { Paper } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Link from '@material-ui/core/Link';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Address from './address';
+import XGridDemo from './transactions';
+import Summary from './summary';
+import Bird from './../bird_logo.png';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
     fontFamily: [
       '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
+      'Arial',
+      'sans-serif',
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
-    ].join(","),
+    ].join(','),
   },
   root: {
-    background: "none",
-    backgroundColor: "transparent",
+    background: 'none',
+    backgroundColor: 'transparent',
   },
   body: {
-    background: "none",
-    backgroundColor: "transparent",
+    background: 'none',
+    backgroundColor: 'transparent',
   },
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     // backgroundColor: theme.palette.secondary.main,
   },
   avatar: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     // backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(2),
   },
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(4),
     padding: theme.spacing(6),
-    textAlign: "center",
+    textAlign: 'center',
   },
   noPadding: {
     padding: theme.spacing(0),
@@ -68,36 +68,36 @@ const useStyles = makeStyles((theme) => ({
 function Copyright() {
   return (
     <div>
-      <Typography variant="body1" color="textPrimary" align="center">
+      <Typography variant='body1' color='textPrimary' align='center'>
         How to Use <br />
         Add an account with transaction history on the ethereum mainnet to see
         valid result. Any issues, please contact admin@bird.money
       </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {"Copyright © "}
-        <Link color="inherit" target="_blank" href="https://bird.money">
+      <Typography variant='body2' color='textSecondary' align='center'>
+        {'Copyright © '}
+        <Link color='inherit' target='_blank' href='https://bird.money'>
           Bird.Money
-        </Link>{" "}
+        </Link>{' '}
         {new Date().getFullYear()}
-        {"."}
+        {'.'}
         <br />
         Follow us on &nbsp;
         <Link
-          color="error"
-          target="_blank"
-          href="https://twitter.com/_birdmoney"
+          color='error'
+          target='_blank'
+          href='https://twitter.com/_birdmoney'
         >
           Twitter
-        </Link>{" "}
+        </Link>{' '}
         |
-        <Link color="error" target="_blank" href="https://discord.gg/Z2BeCnS">
+        <Link color='error' target='_blank' href='https://discord.gg/Z2BeCnS'>
           &nbsp;Discord
-        </Link>{" "}
+        </Link>{' '}
         |
         <Link
-          color="error"
-          target="_blank"
-          href="https://medium.com/bird-money"
+          color='error'
+          target='_blank'
+          href='https://medium.com/bird-money'
         >
           &nbsp;Medium
         </Link>
@@ -112,10 +112,10 @@ const Main = (props) => {
   const account = props.account;
   const web3Obj = props.web3Obj;
 
-  const [valueOfUserInput, setUserChange] = useState("");
-  const [Ethersdata, setEtherdata] = useState("");
-  const [birdData, setBirddata] = useState("");
-  const [EthBalance, setEthBalance] = useState("");
+  const [valueOfUserInput, setUserChange] = useState('');
+  const [Ethersdata, setEtherdata] = useState('');
+  const [birdData, setBirddata] = useState('');
+  const [EthBalance, setEthBalance] = useState('');
   const [error, setError] = useState(null);
 
   const handleSubmit = (event) => {
@@ -178,7 +178,7 @@ const Main = (props) => {
       <Container className={classes.noPadding}>
         <Grid className={classes.marginTop}>
           <Grid item xs={12}>
-            <Typography component="h1" variant="h4">
+            <Typography component='h1' variant='h4'>
               Oracle Nodes
             </Typography>
           </Grid>
@@ -186,61 +186,57 @@ const Main = (props) => {
           <Grid container spacing={3}>
             <Grid item xs>
               <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant="h4">Node 1</Typography>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography variant='h4'>Node 1</Typography>
+                <Typography className={classes.pos} color='textSecondary'>
                   Status: <span>Active</span>
                 </Typography>
-                <Typography variant="caption" display="block" gutterBottom>
+                <Typography variant='caption' display='block' gutterBottom>
                   Address
                   <br />
                   <Link
-                    target="_blank"
-                    href="https://kovan.etherscan.io/address/0x3e4897523ed7532e5ed064F1a7Cf15b6216fB14E"
+                    target='_blank'
+                    href='https://kovan.etherscan.io/address/0x3e4897523ed7532e5ed064F1a7Cf15b6216fB14E'
                   >
                     0x3e4897523ed7532e5ed064F1a7Cf15b6216fB14E
-                  </Link>{" "}
-
+                  </Link>{' '}
                 </Typography>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant="h4">Node 2</Typography>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography variant='h4'>Node 2</Typography>
+                <Typography className={classes.pos} color='textSecondary'>
                   Status: <span>Active</span>
                 </Typography>
-                <Typography variant="caption" display="block" gutterBottom>
+                <Typography variant='caption' display='block' gutterBottom>
                   Address
                   <br />
-
                   <Link
-                    target="_blank"
-                    href="https://kovan.etherscan.io/address/0x35fA8692EB10F87D17Cd27fB5488598D33B023E5"
+                    target='_blank'
+                    href='https://kovan.etherscan.io/address/0x35fA8692EB10F87D17Cd27fB5488598D33B023E5'
                   >
                     0x35fA8692EB10F87D17Cd27fB5488598D33B023E5
-                  </Link>{" "}
-
+                  </Link>{' '}
                 </Typography>
               </Paper>
             </Grid>
 
             <Grid item xs>
               <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant="h4">Node 3</Typography>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography variant='h4'>Node 3</Typography>
+                <Typography className={classes.pos} color='textSecondary'>
                   Status: <span>Active</span>
                 </Typography>
-                <Typography variant="caption" display="block" gutterBottom>
+                <Typography variant='caption' display='block' gutterBottom>
                   Address
                   <br />
-
                   <Link
-                    target="_blank"
-                    href="https://kovan.etherscan.io/address/0x58Fd79D34Edc6362f92c6799eE46945113A6EA91"
+                    target='_blank'
+                    href='https://kovan.etherscan.io/address/0x58Fd79D34Edc6362f92c6799eE46945113A6EA91'
                   >
                     0x58Fd79D34Edc6362f92c6799eE46945113A6EA91
-                  </Link>{" "}
+                  </Link>{' '}
                 </Typography>
               </Paper>
             </Grid>
