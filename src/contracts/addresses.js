@@ -2,8 +2,8 @@
 // Goerli, Kovan, Rinkeby and Ropsten. Replace it with your smart contracts.
 const addresses = {
   ceaErc20: '0x877FE2925774219d8C6649D12d339d8F04c72d0f',
-  birdErc20: '0xd5b68817a015806d26532c2cc07c22420b99cfc4',
-  kovan: '0xc7953af803b8d64c909080c4e143875470c394d8',
+  birdErc20: '0x3238496ffb1C94439F163a4478ec59b9e5472827',
+  kovan: '0x09f5B270e9774505Ee1A216B4195d0D9899d4906',
 };
 
 export default addresses;

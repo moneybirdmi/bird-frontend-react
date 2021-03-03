@@ -126,6 +126,15 @@
   },
   {
     "inputs": [],
+    "name": "getProviders",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
     "name": "getRating",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
     "stateMutability": "view",
@@ -133,7 +142,7 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
+      { "internalType": "address", "name": "_ethAddress", "type": "address" }
     ],
     "name": "getRatingByAddress",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],

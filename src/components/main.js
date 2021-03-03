@@ -12,6 +12,7 @@ import XGridDemo from './transactions';
 import Summary from './summary';
 import Bird from './../bird_logo.png';
 import Grid from '@material-ui/core/Grid';
+import ProviderCard from './shared/ProviderCard';
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -184,62 +185,14 @@ const Main = (props) => {
           </Grid>
 
           <Grid container spacing={3}>
-            <Grid item xs>
-              <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant='h4'>Node 1</Typography>
-                <Typography className={classes.pos} color='textSecondary'>
-                  Status: <span>Active</span>
-                </Typography>
-                <Typography variant='caption' display='block' gutterBottom>
-                  Address
-                  <br />
-                  <Link
-                    target='_blank'
-                    href='https://kovan.etherscan.io/address/0x3e4897523ed7532e5ed064F1a7Cf15b6216fB14E'
-                  >
-                    0x3e4897523ed7532e5ed064F1a7Cf15b6216fB14E
-                  </Link>{' '}
-                </Typography>
-              </Paper>
-            </Grid>
-
-            <Grid item xs>
-              <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant='h4'>Node 2</Typography>
-                <Typography className={classes.pos} color='textSecondary'>
-                  Status: <span>Active</span>
-                </Typography>
-                <Typography variant='caption' display='block' gutterBottom>
-                  Address
-                  <br />
-                  <Link
-                    target='_blank'
-                    href='https://kovan.etherscan.io/address/0x35fA8692EB10F87D17Cd27fB5488598D33B023E5'
-                  >
-                    0x35fA8692EB10F87D17Cd27fB5488598D33B023E5
-                  </Link>{' '}
-                </Typography>
-              </Paper>
-            </Grid>
-
-            <Grid item xs>
-              <Paper className={(classes.paper, classes.nodes)}>
-                <Typography variant='h4'>Node 3</Typography>
-                <Typography className={classes.pos} color='textSecondary'>
-                  Status: <span>Active</span>
-                </Typography>
-                <Typography variant='caption' display='block' gutterBottom>
-                  Address
-                  <br />
-                  <Link
-                    target='_blank'
-                    href='https://kovan.etherscan.io/address/0x58Fd79D34Edc6362f92c6799eE46945113A6EA91'
-                  >
-                    0x58Fd79D34Edc6362f92c6799eE46945113A6EA91
-                  </Link>{' '}
-                </Typography>
-              </Paper>
-            </Grid>
+            {[1, 2, 3, 5, 6].map((n) => (
+              <ProviderCard
+                address={n}
+                pos={classes.pos}
+                paper={classes.paper}
+                nodes={classes.nodes}
+              ></ProviderCard>
+            ))}
           </Grid>
         </Grid>
       </Container>
