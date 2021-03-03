@@ -14,6 +14,8 @@ import Bird from './../bird_logo.png';
 import Grid from '@material-ui/core/Grid';
 import ProviderCard from './shared/ProviderCard';
 
+import Web3 from 'web3';
+import { addresses, abis } from '../contracts';
 const useStyles = makeStyles((theme) => ({
   typography: {
     fontFamily: [
@@ -117,7 +119,19 @@ const Main = (props) => {
   const [Ethersdata, setEtherdata] = useState('');
   const [birdData, setBirddata] = useState('');
   const [EthBalance, setEthBalance] = useState('');
+  const [providers, setProviders] = useState('');
   const [error, setError] = useState(null);
+
+  const loadProviders = (setProviders) => {
+    const web3 = web3Obj;
+    const abi = abis.bird;
+    const address = addresses.kovan;
+    const contract = new web3.eth.Contract(abi, address);
+    contract.methods
+      .getProviders()
+      .call()
+      .then((a) => setProviders(a));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -144,6 +158,8 @@ const Main = (props) => {
   };
 
   function EtherBalance(address) {
+    loadProviders(setProviders);
+
     // const birdApi = `https://www.bird.money/analytics/address/${address}`;
     const birdApi = `https://api.birdprotocol.com/analytics/address/${address}`;
     fetch(birdApi)
@@ -185,14 +201,18 @@ const Main = (props) => {
           </Grid>
 
           <Grid container spacing={3}>
-            {[1, 2, 3, 5, 6].map((n) => (
-              <ProviderCard
-                address={n}
-                pos={classes.pos}
-                paper={classes.paper}
-                nodes={classes.nodes}
-              ></ProviderCard>
-            ))}
+            {providers ? (
+              providers.map((p) => (
+                <ProviderCard
+                  address={p}
+                  pos={classes.pos}
+                  paper={classes.paper}
+                  nodes={classes.nodes}
+                ></ProviderCard>
+              ))
+            ) : (
+              <h2>Loading...</h2>
+            )}
           </Grid>
         </Grid>
       </Container>

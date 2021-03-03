@@ -1,10 +1,11 @@
 import { Grid, Link, Paper, Typography } from '@material-ui/core';
 import React from 'react';
+
 const providerCard = (props) => {
   return (
     <Grid item xs>
       <Paper className={(props.paper, props.nodes)}>
-        <Typography variant='h4'>Node 3</Typography>
+        <Typography variant='h4'>Node</Typography>
         <Typography className={props.pos} color='textSecondary'>
           Status: <span>Active</span>
         </Typography>
