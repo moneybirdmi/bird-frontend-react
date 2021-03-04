@@ -180,17 +180,6 @@ const Main = (props) => {
         console.log('then of addProvider: ', a);
       })
       .catch((a) => console.log('catch of addProvider: ', a));
-
-    contract.events.ProviderAdded((err, res) => {
-      if (err === null) {
-        const addedProvider = res.returnValues.provider;
-        console.log('provider added: ', addedProvider);
-        console.log('providers updated: ', providers.concat(addedProvider));
-        //(providers.concat(addedProvider));
-      } else {
-        console.error('error of provider added: ', err);
-      }
-    });
   };
 
   const removeProvider = (addr) => {
@@ -203,30 +192,6 @@ const Main = (props) => {
         window.location.reload();
       })
       .catch((a) => console.log('catch of removeProvider: ', a));
-
-    contract.events.ProviderRemoved((err, res) => {
-      if (err === null) {
-        let removedProvider = res.returnValues.provider;
-        console.log('ProviderRemoved res obj: ', res);
-        console.log('provider removed: ', removedProvider);
-        // console.log(
-        //   providers.filter((id) => {
-        //     console.log(id);
-        //     return id !== removedProvider.address;
-        //   })
-        // );
-        console.log(
-          'providers after delete: ',
-
-          providers.filter((id) => id !== removedProvider),
-          '\n',
-          providers.map((id) => (id === removeProvider ? '0' : id))
-        );
-        //yarn (providers.map((id) => (id == removeProvider ? 0 : id)));
-      } else {
-        console.error('error of provider removed: ', err);
-      }
-    });
   };
 
   const handleSubmit = (event) => {
