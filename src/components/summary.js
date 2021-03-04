@@ -185,14 +185,6 @@ const Summary = (props) => {
                 }
               }
             );
-
-            contract.methods.getProviders().call((err, res) => {
-              if (err === null) {
-                console.log('providers: ', res);
-              } else {
-                console.error(err);
-              }
-            });
           }
         }}
       >

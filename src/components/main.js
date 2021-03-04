@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import { Paper } from '@material-ui/core';
+import { Button, Input, Paper, TextField } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
@@ -119,18 +119,114 @@ const Main = (props) => {
   const [Ethersdata, setEtherdata] = useState('');
   const [birdData, setBirddata] = useState('');
   const [EthBalance, setEthBalance] = useState('');
-  const [providers, setProviders] = useState('');
+  const [providers, setProviders] = useState(true);
+  const [selectedProvider, setSelectedProvider] = useState('');
   const [error, setError] = useState(null);
 
-  const loadProviders = (setProviders) => {
+  const getContract = () => {
     const web3 = web3Obj;
     const abi = abis.bird;
     const address = addresses.kovan;
     const contract = new web3.eth.Contract(abi, address);
-    contract.methods
-      .getProviders()
+    return contract;
+  };
+  const loadProviders = () => {
+    getContract()
+      .methods.getProviders()
       .call()
-      .then((a) => setProviders(a));
+      .then((a) => {
+        setProviders(a);
+        console.log('providers:', a);
+      })
+      .catch(console.log);
+  };
+
+  const getProvidersView = (gotProviders) => {
+    let providersArr = [];
+    for (let i = 0; i < gotProviders.length; i++) {
+      providersArr.push(
+        <ProviderCard
+          i={i}
+          key={gotProviders[i]}
+          address={gotProviders[i]}
+          pos={classes.pos}
+          paper={classes.paper}
+          nodes={classes.nodes}
+        ></ProviderCard>
+      );
+    }
+    return providersArr;
+
+    // return gotProviders.map((p) => (
+    //   <ProviderCard
+    //     i={p}
+    //     key={p}
+    //     address={p}
+    //     pos={classes.pos}
+    //     paper={classes.paper}
+    //     nodes={classes.nodes}
+    //   ></ProviderCard>
+    // ));
+  };
+  const contract = getContract();
+  const addProvider = (addr) => {
+    contract.methods
+      .addProvider(addr)
+      .send({ from: account })
+      .then((a) => {
+        //setProviders(providers.concat(a));
+        window.location.reload();
+
+        console.log('then of addProvider: ', a);
+      })
+      .catch((a) => console.log('catch of addProvider: ', a));
+
+    contract.events.ProviderAdded((err, res) => {
+      if (err === null) {
+        const addedProvider = res.returnValues.provider;
+        console.log('provider added: ', addedProvider);
+        console.log('providers updated: ', providers.concat(addedProvider));
+        //(providers.concat(addedProvider));
+      } else {
+        console.error('error of provider added: ', err);
+      }
+    });
+  };
+
+  const removeProvider = (addr) => {
+    contract.methods
+      .removeProvider(addr)
+      .send({ from: account })
+      .then((a) => {
+        console.log('then of removeProvider: ', a);
+        //setProviders(providers.filter((a) => a !== addr));
+        window.location.reload();
+      })
+      .catch((a) => console.log('catch of removeProvider: ', a));
+
+    contract.events.ProviderRemoved((err, res) => {
+      if (err === null) {
+        let removedProvider = res.returnValues.provider;
+        console.log('ProviderRemoved res obj: ', res);
+        console.log('provider removed: ', removedProvider);
+        // console.log(
+        //   providers.filter((id) => {
+        //     console.log(id);
+        //     return id !== removedProvider.address;
+        //   })
+        // );
+        console.log(
+          'providers after delete: ',
+
+          providers.filter((id) => id !== removedProvider),
+          '\n',
+          providers.map((id) => (id === removeProvider ? '0' : id))
+        );
+        //yarn (providers.map((id) => (id == removeProvider ? 0 : id)));
+      } else {
+        console.error('error of provider removed: ', err);
+      }
+    });
   };
 
   const handleSubmit = (event) => {
@@ -158,7 +254,7 @@ const Main = (props) => {
   };
 
   function EtherBalance(address) {
-    loadProviders(setProviders);
+    loadProviders();
 
     // const birdApi = `https://www.bird.money/analytics/address/${address}`;
     const birdApi = `https://api.birdprotocol.com/analytics/address/${address}`;
@@ -199,19 +295,46 @@ const Main = (props) => {
               Oracle Nodes
             </Typography>
           </Grid>
+          <Grid item xs={12}>
+            <Typography component='h1' variant='h4'>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <TextField
+                  label='ETH Address'
+                  variant='outlined'
+                  value={selectedProvider}
+                  type='text'
+                  onChange={(e) => {
+                    setSelectedProvider(e.target.value);
+                  }}
+                ></TextField>
+                {/* <button visible={false}>.</button> */}
+                <Button
+                  color='primary'
+                  variant='contained'
+                  disableElevation
+                  onClick={() => addProvider(selectedProvider)}
+                >
+                  ADD
+                </Button>
+                <Button
+                  variant='contained'
+                  disableElevation
+                  onClick={() => removeProvider(selectedProvider)}
+                >
+                  REMOVE
+                </Button>
+              </form>
+            </Typography>
+          </Grid>
 
           <Grid container spacing={3}>
             {providers ? (
-              providers.map((p) => (
-                <ProviderCard
-                  address={p}
-                  pos={classes.pos}
-                  paper={classes.paper}
-                  nodes={classes.nodes}
-                ></ProviderCard>
-              ))
+              getProvidersView(providers)
             ) : (
-              <h2>Loading...</h2>
+              // providers
+              <Typography component='h2' variant='h4'>
+                Loading ...
+              </Typography>
             )}
           </Grid>
         </Grid>

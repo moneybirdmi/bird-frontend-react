@@ -5,7 +5,7 @@ const providerCard = (props) => {
   return (
     <Grid item xs>
       <Paper className={(props.paper, props.nodes)}>
-        <Typography variant='h4'>Node</Typography>
+        <Typography variant='h4'>Node {props.i + 1}</Typography>
         <Typography className={props.pos} color='textSecondary'>
           Status: <span>Active</span>
         </Typography>
