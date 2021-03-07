@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/bird-frontend-react/static/css/main.2c29cc3e.chunk.css",
-    "main.js": "/bird-frontend-react/static/js/main.63207817.chunk.js",
-    "main.js.map": "/bird-frontend-react/static/js/main.63207817.chunk.js.map",
+    "main.js": "/bird-frontend-react/static/js/main.cd7795cd.chunk.js",
+    "main.js.map": "/bird-frontend-react/static/js/main.cd7795cd.chunk.js.map",
     "runtime-main.js": "/bird-frontend-react/static/js/runtime-main.ed133f7d.js",
     "runtime-main.js.map": "/bird-frontend-react/static/js/runtime-main.ed133f7d.js.map",
     "static/js/2.4d1a2bbb.chunk.js": "/bird-frontend-react/static/js/2.4d1a2bbb.chunk.js",
     "static/js/2.4d1a2bbb.chunk.js.map": "/bird-frontend-react/static/js/2.4d1a2bbb.chunk.js.map",
     "index.html": "/bird-frontend-react/index.html",
-    "precache-manifest.19e521f00f7a996bbeec2fa4f1941bee.js": "/bird-frontend-react/precache-manifest.19e521f00f7a996bbeec2fa4f1941bee.js",
+    "precache-manifest.bebcf49980259da7db3c4acfefbc4fae.js": "/bird-frontend-react/precache-manifest.bebcf49980259da7db3c4acfefbc4fae.js",
     "service-worker.js": "/bird-frontend-react/service-worker.js",
     "static/css/main.2c29cc3e.chunk.css.map": "/bird-frontend-react/static/css/main.2c29cc3e.chunk.css.map",
     "static/js/2.4d1a2bbb.chunk.js.LICENSE.txt": "/bird-frontend-react/static/js/2.4d1a2bbb.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.ed133f7d.js",
     "static/js/2.4d1a2bbb.chunk.js",
     "static/css/main.2c29cc3e.chunk.css",
-    "static/js/main.63207817.chunk.js"
+    "static/js/main.cd7795cd.chunk.js"
   ]
 }
