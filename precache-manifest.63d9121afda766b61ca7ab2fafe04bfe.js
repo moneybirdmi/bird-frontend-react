@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c57aba1cb876536b75a25bf5d6770d68",
+    "revision": "4c66f582f263f18a88b039521b194399",
     "url": "/bird-frontend-react/index.html"
   },
   {
-    "revision": "23bce5d0042b7c4c23b1",
+    "revision": "5150b956dfd9d849f1ce",
     "url": "/bird-frontend-react/static/css/main.2c29cc3e.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/bird-frontend-react/static/js/2.4d1a2bbb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "23bce5d0042b7c4c23b1",
-    "url": "/bird-frontend-react/static/js/main.cd7795cd.chunk.js"
+    "revision": "5150b956dfd9d849f1ce",
+    "url": "/bird-frontend-react/static/js/main.40be9b4d.chunk.js"
   },
   {
     "revision": "1cba59ece1e8b11e344b",
