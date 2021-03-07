@@ -3,7 +3,7 @@ import React from 'react';
 
 const providerCard = (props) => {
   return (
-    <Grid item xs>
+    <Grid item xs={4} sm={6} md={6} lg={6}>
       <Paper className={(props.paper, props.nodes)}>
         <Typography variant='h4'>Node {props.i + 1}</Typography>
         <Typography className={props.pos} color='textSecondary'>
