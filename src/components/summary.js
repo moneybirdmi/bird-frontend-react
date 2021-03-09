@@ -121,7 +121,7 @@ const Summary = (props) => {
     let rating = BigNumber(value);
     let oneEther = new BigNumber(1);
     rating = rating.dividedBy(oneEther.shiftedBy(18)).toNumber();
-    console.log(rating);
+    console.log('Rating after consensus: ', rating);
     setBirdRating(rating);
   };
 
